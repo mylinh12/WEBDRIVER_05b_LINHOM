@@ -13,21 +13,21 @@ import org.testng.annotations.AfterClass;
 public class Topic_01_CheckEnviroment {
 	WebDriver driver;
 
-	@BeforeClass
-	public void beforeClass() {
-		driver = new FirefoxDriver();
-		driver.get("https://www.google.com/");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-	}
-
 	@Test
 	public void TC_01_CheckUrlAndTitle() {
 		String homPageTilte = driver.getTitle();
-		Assert.assertEquals(homPageTilte, "Google");
+		Assert.assertEquals(homPageTilte, "Guru99 Bank Home Page");
 		
 		String homePageUrl = driver.getCurrentUrl();
-		Assert.assertEquals(homePageUrl, "https://www.google.com/");
+		Assert.assertEquals(homePageUrl, "http://demo.guru99.com/v4/");
+	}
+	
+	@BeforeClass
+	public void beforeClass() {
+		driver = new FirefoxDriver();
+		driver.get("http://demo.guru99.com/v4/");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 	}
 
 	@AfterClass
