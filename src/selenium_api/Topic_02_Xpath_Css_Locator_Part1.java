@@ -132,7 +132,7 @@ public class Topic_02_Xpath_Css_Locator_Part1 {
 	public void TC_08_Class() throws Exception {
 
 		driver.get("http://live.demoguru99.com/index.php/customer/account/login/");
-		driver.findElement(By.className("input-text required-entry validate-password")).sendKeys("123456");
+		driver.findElement(By.className("validate-password")).sendKeys("123456");
 		Thread.sleep(3000);
 
 	}
@@ -171,9 +171,9 @@ public class Topic_02_Xpath_Css_Locator_Part1 {
 		// href="http://live.demoguru99.com/index.php/customer/account/">My Account</a>
 		// Tuong doi: chi can nhap content la 'MY' hoac 'ACCOUNT' hoac 'Y ACCO' deu tim dc
 		driver.get("http://live.demoguru99.com/index.php/customer/account/login/");
-		driver.findElement(By.linkText("MY")).isDisplayed();
-		driver.findElement(By.linkText("ACCOUNT")).isDisplayed();
-		driver.findElement(By.linkText("Y ACCO")).isDisplayed();
+		driver.findElement(By.partialLinkText("MY")).isDisplayed();
+		driver.findElement(By.partialLinkText("ACCOUNT")).isDisplayed();
+		driver.findElement(By.partialLinkText("Y ACCO")).isDisplayed();
 		Thread.sleep(3000);
 	}
 	
