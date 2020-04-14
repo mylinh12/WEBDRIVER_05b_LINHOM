@@ -82,7 +82,7 @@ public class Topic_05_DropdownList_Textbox_TextArea {
 	}
 
 	@Test
-	public void TC_02_() {
+	public void TC_02_CreateNewCustomer() {
 		driver.get("http://demo.guru99.com/v4/");
 		driver.findElement(By.xpath("//input[@name='uid']")).sendKeys("mngr254506");
 		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("Apatehu");
@@ -176,11 +176,6 @@ public class Topic_05_DropdownList_Textbox_TextArea {
 				newAddress);
 		Assert.assertEquals(driver.findElement(By.xpath("//td[text()='City']//following-sibling::td")).getText(),
 				newCity);
-
-	}
-
-	@Test
-	public void TC_03_() {
 
 	}
 
