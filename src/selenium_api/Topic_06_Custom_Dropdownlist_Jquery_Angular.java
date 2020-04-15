@@ -21,6 +21,8 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 
 	@BeforeClass
 	public void beforeClass() {
+//		System.setProperty("webdriver.chrome.driver", ".\\driver\\chromedriver.exe");
+//		driver = new ChromeDriver();
 		driver = new FirefoxDriver();
 		wait = new WebDriverWait(driver, 30);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -36,8 +38,7 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 		selectCustomDropdownList("//span[@id='speed-button']", "//ul[@id='speed-menu']//li[@class='ui-menu-item']/div",
 				"Faster");
 		Assert.assertTrue(
-				driver.findElement(By.xpath("//span[@id='speed-button']//span[text()='Faster']"))
-						.isDisplayed());
+				driver.findElement(By.xpath("//span[@id='speed-button']//span[text()='Faster']")).isDisplayed());
 
 		// dropdown list: 'Select a number'
 		System.out.println("\nSelect a number:");
@@ -50,17 +51,21 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 	@Test
 	public void TC_02_Dropdownlist_Angular() {
 		driver.get("https://material.angular.io/components/select/examples");
-		
 		// dropdown list: 'Favorite food'
 		System.out.println("\nFavorite food:");
-		selectCustomDropdownList("//mat-select[@id='mat-select-0']//div[@class='mat-select-arrow-wrapper ng-tns-c153-4']", "//mat-option",
-				" Tacos ");
-		Assert.assertTrue(driver.findElement(By.xpath("//mat-select[@id='mat-select-0']//span[text()='Tacos']")).isDisplayed());
-		
+		String tacosValue = "Tacos";
+		selectCustomDropdownList(
+				"//mat-select[@id='mat-select-0']//div[@class='mat-select-arrow-wrapper ng-tns-c153-4']",
+				"//span[@class='mat-option-text']", tacosValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[contains(text(), '" + tacosValue + "')]")).isDisplayed());
+
 		// dropdown list: 'State'
 		System.out.println("\nState:");
-		selectCustomDropdownList("//mat-select[@id='mat-select-5']//div[@class='mat-select-arrow-wrapper ng-tns-c153-18']", "//mat-option",
-				"Washington");
+		String washingtonValue = "Washington";
+		selectCustomDropdownList(
+				"//mat-select[@id='mat-select-5']//div[@class='mat-select-arrow-wrapper ng-tns-c153-18']",
+				"//mat-option", washingtonValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[contains(text(), '" + washingtonValue + "')]")).isDisplayed());
 	}
 
 	public void selectCustomDropdownList(String dropdown, String listItems, String valueItem) {
@@ -76,11 +81,11 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 		// Get text for all items
 		for (WebElement item : allItems) {
 			System.out.println(item.getText());
-			if (item.getText().equals(valueItem)) {
+			if (item.getText().contains((valueItem))) {
 				// Scroll to that item and click
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", item);
 				sleepInSeconds(3);
-				
+
 				item.click();
 				sleepInSeconds(3);
 				break;
