@@ -35,16 +35,15 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 		driver.get("http://jqueryui.com/resources/demos/selectmenu/default.html");
 		// dropdown list: 'Select a speed'
 		System.out.println("\nSelect a speed:");
-		selectCustomDropdownList("//span[@id='speed-button']", "//ul[@id='speed-menu']//li[@class='ui-menu-item']/div",
-				"Faster");
-		Assert.assertTrue(
-				driver.findElement(By.xpath("//span[@id='speed-button']//span[text()='Faster']")).isDisplayed());
+		String fasterValue = "Faster";
+		selectCustomDropdownList("//span[@id='speed-button']", "//ul[@id='speed-menu']//li[@class='ui-menu-item']/div", fasterValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[@id='speed-button']//span[text()='" + fasterValue + "']")).isDisplayed());
 
 		// dropdown list: 'Select a number'
 		System.out.println("\nSelect a number:");
-		selectCustomDropdownList("//span[@id='number-button']",
-				"//ul[@id='number-menu']//li[@class='ui-menu-item']/div", "19");
-		Assert.assertTrue(driver.findElement(By.xpath("//span[@id='number-button']//span[text()='19']")).isDisplayed());
+		String numValue = "19";
+		selectCustomDropdownList("//span[@id='number-button']", "//ul[@id='number-menu']//li[@class='ui-menu-item']/div", numValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[@id='number-button']//span[text()='" + numValue + "']")).isDisplayed());
 
 	}
 
@@ -54,18 +53,25 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 		// dropdown list: 'Favorite food'
 		System.out.println("\nFavorite food:");
 		String tacosValue = "Tacos";
-		selectCustomDropdownList(
-				"//mat-select[@id='mat-select-0']//div[@class='mat-select-arrow-wrapper ng-tns-c153-4']",
-				"//span[@class='mat-option-text']", tacosValue);
-		Assert.assertTrue(driver.findElement(By.xpath("//span[contains(text(), '" + tacosValue + "')]")).isDisplayed());
+		selectCustomDropdownList("//mat-select[@id='mat-select-0']//div[@class='mat-select-arrow-wrapper ng-tns-c153-4']", "//span[@class='mat-option-text']", tacosValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[text()= '" + tacosValue + "']")).isDisplayed());
 
 		// dropdown list: 'State'
 		System.out.println("\nState:");
 		String washingtonValue = "Washington";
-		selectCustomDropdownList(
-				"//mat-select[@id='mat-select-5']//div[@class='mat-select-arrow-wrapper ng-tns-c153-18']",
-				"//mat-option", washingtonValue);
-		Assert.assertTrue(driver.findElement(By.xpath("//span[contains(text(), '" + washingtonValue + "')]")).isDisplayed());
+		selectCustomDropdownList("//mat-select[@id='mat-select-5']//div[@class='mat-select-arrow-wrapper ng-tns-c153-18']", "//mat-option", washingtonValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//span[text()= '" + washingtonValue + "']")).isDisplayed());
+	}
+
+	@Test
+	public void TC_03_Dropdownlist_VueJs() {
+		driver.get("https://mikerodham.github.io/vue-dropdowns/");
+		// dropdown list: 'A prettier way to display select boxes'
+		System.out.println("\nA prettier way to display select boxes:");
+		String secondValue = "Second Option";
+		selectCustomDropdownList("//div[@class='btn-group']/li[@class='dropdown-toggle']", "//div[@class='btn-group']/ul//li", secondValue);
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(), '" + secondValue + "')]")).isDisplayed());
+
 	}
 
 	public void selectCustomDropdownList(String dropdown, String listItems, String valueItem) {
@@ -80,8 +86,8 @@ public class Topic_06_Custom_Dropdownlist_Jquery_Angular {
 
 		// Get text for all items
 		for (WebElement item : allItems) {
-			System.out.println(item.getText());
-			if (item.getText().contains((valueItem))) {
+			System.out.println(item.getText().trim());
+			if (item.getText().trim().equals(valueItem)) {
 				// Scroll to that item and click
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", item);
 				sleepInSeconds(3);
