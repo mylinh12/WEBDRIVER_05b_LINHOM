@@ -98,6 +98,26 @@ public class Topic_07_Button_Radio_Checkbox_Alert_Popup {
 		sleepInSeconds(3);
 		Assert.assertTrue(driver.findElement(By.xpath("//p[@id='result']")).getText().equals("You clicked an alert successfully"));
 
+		// JS Confirm
+		driver.findElement(By.xpath("//button[text()='Click for JS Confirm']")).click();
+		alert = driver.switchTo().alert();
+		Assert.assertTrue(alert.getText().equals("I am a JS Confirm"));
+		sleepInSeconds(3);
+		
+		alert.dismiss();
+		Assert.assertTrue(driver.findElement(By.xpath("//p[@id='result']")).getText().equals("You clicked: Cancel"));
+
+		// JS Prompt
+		driver.findElement(By.xpath("//button[text()='Click for JS Prompt']")).click();
+		alert = driver.switchTo().alert();
+		String valueMessage = "Practice Alert element";
+		alert.sendKeys(valueMessage);
+		sleepInSeconds(3);
+		
+		alert.accept();
+		sleepInSeconds(3);
+		Assert.assertTrue(driver.findElement(By.xpath("//p[@id='result']")).getText().equals("You entered: " + valueMessage));
+
 	}
 
 	public void clickElementByJavascript(String locator) {
