@@ -28,7 +28,7 @@ public class Topic_13_UserInteractions {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 
-//	@Test
+	@Test
 	public void TC_01_HoverMouse() {
 		driver.get("https://www.myntra.com/");
 		WebElement discover = driver.findElement(By.xpath("//div[@class='desktop-navLink']//a[text()='Discover']"));
@@ -41,7 +41,7 @@ public class Topic_13_UserInteractions {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_02_ClickAndHold_Block() {
 		driver.get("https://jqueryui.com/resources/demos/selectable/display-grid.html");
 		List<WebElement> allItems = driver.findElements(By.xpath("//ol[@id='selectable']//li"));
@@ -61,7 +61,7 @@ public class Topic_13_UserInteractions {
 		}
 	}
 
-//	@Test
+	@Test
 	public void TC_03_ClickAndHold_Random() {
 		driver.get("https://jqueryui.com/resources/demos/selectable/display-grid.html");
 		List<WebElement> allItems = driver.findElements(By.xpath("//ol[@id='selectable']//li"));
@@ -88,7 +88,7 @@ public class Topic_13_UserInteractions {
 
 	}
 
-//	@Test
+	@Test
 	public void TC_04_DoubleClick() {
 		driver.get("https://automationfc.github.io/basic-form/index.html#");
 		action.doubleClick(driver.findElement(By.xpath("//button[text()='Double click me']"))).perform();
@@ -97,7 +97,7 @@ public class Topic_13_UserInteractions {
 		Assert.assertTrue(driver.findElement(By.xpath("//p[@id='demo']")).getText().equals("Hello Automation Guys!"));
 	}
 
-//	@Test
+	@Test
 	public void TC_05_RightClick() {
 		driver.get("http://swisnl.github.io/jQuery-contextMenu/demo.html");
 		action.contextClick(driver.findElement(By.xpath("//span[text()='right click me']"))).perform();

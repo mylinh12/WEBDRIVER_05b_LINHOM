@@ -27,7 +27,7 @@ public class Topic_07_Button_Radio_Checkbox_Alert_Popup {
 		wait = new WebDriverWait(driver, 30);
 	}
 
-	// @Test
+	@Test
 	public void TC_01_Button_clickByAPI() {
 		driver.get("http://live.demoguru99.com/");
 		driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
@@ -42,7 +42,7 @@ public class Topic_07_Button_Radio_Checkbox_Alert_Popup {
 		Assert.assertEquals(createAccountUrl, "http://live.demoguru99.com/index.php/customer/account/create/");
 	}
 
-	// @Test
+	@Test
 	public void TC_02_Button_clickByJavascript() {
 		driver.get("http://live.demoguru99.com/");
 		driver.findElement(By.xpath("//div[@class='footer-container']//a[text()='My Account']")).click();
@@ -57,7 +57,7 @@ public class Topic_07_Button_Radio_Checkbox_Alert_Popup {
 		Assert.assertEquals(createAccountUrl, "http://live.demoguru99.com/index.php/customer/account/create/");
 	}
 
-	// @Test
+	@Test
 	public void TC_03_Checkbox() {
 		driver.get("https://demos.telerik.com/kendo-ui/checkbox/index");
 		String dualZoneAirConditioning = "//label[text()='Dual-zone air conditioning']/preceding-sibling::input";
@@ -72,7 +72,7 @@ public class Topic_07_Button_Radio_Checkbox_Alert_Popup {
 
 	}
 
-	// @Test
+	@Test
 	public void TC_04_RadioButton() {
 		driver.get("https://demos.telerik.com/kendo-ui/radiobutton/index");
 		String twoPetrol147Kw = "//label[text()='2.0 Petrol, 147kW']//preceding-sibling::input";

@@ -56,7 +56,7 @@ public class Topic_05_DropdownList_Textbox_TextArea {
 
 	}
 
-	//@Test
+	@Test
 	public void TC_01_DropdownList() {
 		driver.get("https://automationfc.github.io/basic-form/index.html");
 
