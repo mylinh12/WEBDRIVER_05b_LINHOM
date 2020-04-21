@@ -72,16 +72,18 @@ public class Topic_14_Popup_Iframe {
 		//driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='cs-live-chat']//iframe")));
 		driver.switchTo().frame("cs_chat_iframe");
 		driver.findElement(By.xpath("//div[@ng-show='loggedinFirstTime']/textarea")).sendKeys("Automation FC");
+		sleepInSeconds(3);
+		
 		action.sendKeys(driver.findElement(By.xpath("//div[@ng-show='loggedinFirstTime']/textarea")), Keys.ENTER).perform();
 		sleepInSeconds(3);
-
+		
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@ng-submit='editUserInfo()']")).isDisplayed());
 
+		driver.switchTo().defaultContent();
 		driver.findElement(By.xpath("//input[@id='live-search-bar']")).sendKeys("Java");
 		sleepInSeconds(3);
 
 		driver.findElement(By.cssSelector(".search-button")).click();
-
 		sleepInSeconds(5);
 
 	}
