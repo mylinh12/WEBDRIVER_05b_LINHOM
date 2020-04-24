@@ -88,11 +88,6 @@ public class Topic_14_Popup_Iframe {
 
 	}
 
-	@Test
-	public void TC_03_() {
-
-	}
-
 	public void sleepInSeconds(long timeout) {
 		try {
 			Thread.sleep(timeout * 1000);
