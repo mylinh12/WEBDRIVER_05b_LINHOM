@@ -14,7 +14,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_20_WebDriverWait_Part3_1_explicitlyWait {
+public class Topic_20_WebDriverWait_Part3_explicitlyWait {
 	WebDriver driver;
 	WebDriverWait explicitlyWait;
 
