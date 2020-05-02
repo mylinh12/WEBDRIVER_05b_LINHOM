@@ -1,4 +1,4 @@
-package java_basic;
+package java_01_basic;
 
 public class GetCurrentPath {
 
